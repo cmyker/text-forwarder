@@ -3,6 +3,7 @@ package io.github.cmyker.textforwarder
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 
 class ProcessTextActivity : Activity() {
@@ -16,8 +17,8 @@ class ProcessTextActivity : Activity() {
             return
         }
 
-        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
-        val targetPackage = prefs.getString("target_pkg", null)
+        val prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE)
+        val targetPackage = prefs.getString(Constants.PREF_TARGET_PACKAGE, null)
 
         if (targetPackage != null) {
             val sendIntent = createSendIntent(text)
@@ -28,7 +29,7 @@ class ProcessTextActivity : Activity() {
                 finish()
             } else {
                 // Target app is not installed anymore, clear settings and show picker
-                prefs.edit().remove("target_pkg").apply()
+                prefs.edit().remove(Constants.PREF_TARGET_PACKAGE).apply()
                 showPicker(text)
             }
         } else {
@@ -51,6 +52,12 @@ class ProcessTextActivity : Activity() {
     }
 
     private fun isIntentResolvable(intent: Intent): Boolean {
-        return packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null
+        val resolvable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            packageManager.resolveActivity(intent, PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_DEFAULT_ONLY.toLong()))
+        } else {
+            @Suppress("DEPRECATION")
+            packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
+        }
+        return resolvable != null
     }
 }

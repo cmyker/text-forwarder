@@ -1,6 +1,6 @@
-# Text Forwarder (TW)
+# Text Forwarder (TFW)
 
-A minimal Android utility that appears in the text selection menu as "TW".
+A minimal Android utility that appears in the text selection menu as "TFW".
 
 ## What it does
 

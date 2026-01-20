@@ -1,6 +1,5 @@
 package io.github.cmyker.textforwarder
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -20,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         updateTargetPackageText()
 
         clearTargetButton.setOnClickListener {
-            val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
-            prefs.edit().remove("target_pkg").apply()
+            val prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE)
+            prefs.edit().remove(Constants.PREF_TARGET_PACKAGE).apply()
             updateTargetPackageText()
         }
     }
@@ -32,8 +31,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateTargetPackageText() {
-        val prefs = getSharedPreferences("prefs", MODE_PRIVATE)
-        val targetPackage = prefs.getString("target_pkg", null)
+        val prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE)
+        val targetPackage = prefs.getString(Constants.PREF_TARGET_PACKAGE, null)
         targetPackageTextView.text = targetPackage ?: "not set"
     }
 }
