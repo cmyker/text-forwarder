@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TextForwarder</string>
+    <string name="current_target_package">Current target package:</string>
+    <string name="not_set">not set</string>
+    <string name="clear_remembered_app">Clear remembered app</string>
+    <string name="app_description">Minimal utility that appears in the Android Share menu as a TFW shortcut.\nUse it to quickly forward text to a preselected app (e.g., a dictionary) that doesn’t show up in the Share menu. It remembers your choice for next time.</string>
 </resources>

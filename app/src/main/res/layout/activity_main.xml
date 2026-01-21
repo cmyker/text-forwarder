@@ -5,30 +5,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:padding="16dp"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current target package:" />
+        android:text="@string/current_target_package" />
 
     <TextView
         android:id="@+id/target_package_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="not set" />
+        android:text="@string/not_set" />
 
     <Button
         android:id="@+id/clear_target_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear remembered app" />
+        android:text="@string/clear_remembered_app" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Minimal utility that appears in the Android Share menu as a TFW shortcut.\nUse it to quickly forward text to a preselected app (e.g., a dictionary) that doesn’t show up in the Share menu. It remembers your choice for next time." />
+        android:text="@string/app_description" />
 
 </LinearLayout>
